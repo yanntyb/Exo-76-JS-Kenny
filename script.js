@@ -1,23 +1,36 @@
 document.addEventListener("keypress", function (e){
     console.log(e.key)
+    zone();
+    let viewport = document.getElementById("viewport")
     if(e.key === "z"){
         let t = parseInt(document.getElementById('kenny').style.top);
         t = t - 10;
-        document.getElementById('kenny').style.top = t + 'px';
-    }else if(e.key === "s"){
+        if(t>0) {
+            document.getElementById('kenny').style.top = t + 'px';
+        };
+    }
+    else if(e.key === "s"){
         let t = parseInt(document.getElementById('kenny').style.top);
         t = t + 10;
-        document.getElementById('kenny').style.top = t + 'px';
-    }else if(e.key === "q"){
+        console.log(viewport.style.height)
+        if(t < parseInt(viewport.style.height.replace("px","") - 32)) {
+            document.getElementById('kenny').style.top = t + 'px';
+        }
+    }
+    else if(e.key === "q") {
         let l = parseInt(document.getElementById('kenny').style.left);
         l = l - 10;
-        document.getElementById('kenny').style.left = l + 'px';
-    }else if(e.key === "d"){
+        if (l > 0) {
+            document.getElementById('kenny').style.left = l + 'px';
+        }
+    }
+    else if(e.key === "d"){
         let r = parseInt(document.getElementById('kenny').style.left);
         r = r + 10;
-        document.getElementById('kenny').style.left = r + 'px';
+        if(r < parseInt(viewport.style.width.replace("px","") - 32)) {
+            document.getElementById('kenny').style.left = r + 'px';
+        }
     }
-    zone();
 })
 
 
